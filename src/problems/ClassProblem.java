@@ -21,9 +21,8 @@ public class ClassProblem {
 		
 		// These are some String choice sets for various questions.
 		private String[] yesNo = {"No", "Yes"};
-		private String[] tired = {"Extremely", "Tired", "Awake"};
 		private String[] weather = {"Nice","Rain","Cold"};
-	
+		private String[] sick = {"very","a little", "no"};
 		
 		public ClassProblem(){
 			makeAttributes();
@@ -51,9 +50,9 @@ public class ClassProblem {
 			// possibilities.
 			attributes.add(new Attribute("Friday?", yesNo));
 			attributes.add(new Attribute("Test Day?", yesNo));
-			attributes.add(new Attribute("Tired?",tired));
+			attributes.add(new Attribute("Tired?",yesNo));
 			attributes.add(new Attribute("Weather?",weather));
-			attributes.add(new Attribute("Sick?", yesNo));
+			attributes.add(new Attribute("Sick?", sick));
 		}
 		
 		/*
@@ -64,32 +63,40 @@ public class ClassProblem {
 			// Shortcut for me to enter the examples...  
 			// Each index tells the value of that attribute
 			int[][] noExamples = {
-					{1,0,0,0,1},  //x3
-					{1,0,0,2,1},  //x5
-					{1,0,1,0,1},  //x6
-					{1,0,1,2,0},  //x7
-					{0,1,0,1,1},  //x10
-					{1,0,2,0,0}   //x12
+					{0,1,0,1,0},  //1
+					{1,1,0,1,0},  //2
+					{1,1,1,0,0},  //3
+					{0,0,0,0,1},  //4  
+					{1,0,1,1,0},  //5
+					{0,0,1,0,1},  //6
+					{0,1,0,2,1},  //7
+					{0,1,1,1,1},  //8
+					{1,1,0,2,1},  //9
 			};
 			
 			int[][] yesExamples = {
-					{0,1,0,0,0},  //x1 
-					{1,0,1,1,0},  //x2
-					{1,1,2,2,0},  //x4
-					{1,1,2,0,1},  //x8
-					{0,1,1,1,0},  //x9
-					{0,0,1,0,0}   //x11
+					{1,1,0,1,2},  //10 
+					{1,1,1,1,2},  //11
+					{0,0,1,1,2},  //12
+					{0,1,0,0,1},  //13
+					{0,1,0,0,1},  //14
+					{0,1,0,0,1},  //15
+					{0,1,0,2,1},  //16
+					{0,1,0,1,1},  //17
+					{0,1,0,2,1},  //18
 			};
 			
+
+
 
 			// This will make my life easier later.  I'm making a little hashmap of all  
 			// attributes to their list of possible answers. 
 			HashMap<Attribute, String[]> attTypes = new HashMap<Attribute, String[]>();
 			attTypes.put(attributes.get(0), yesNo);
 			attTypes.put(attributes.get(1), yesNo);
-			attTypes.put(attributes.get(2), tired);
+			attTypes.put(attributes.get(2), yesNo);
 			attTypes.put(attributes.get(3), weather);
-			attTypes.put(attributes.get(4), yesNo);
+			attTypes.put(attributes.get(4), sick);
 
 			
 			// Now actually populate the examples
